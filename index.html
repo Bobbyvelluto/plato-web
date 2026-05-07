@@ -1,29 +1,279 @@
-<!-- FOOTER LEGALE PLATÒ SRL -->
-<footer>
-  <div class="footer-legal">
-    <p><strong>PLATÒ SRL</strong></p>
-    <p>Sede legale: Piazza della Balduina 59, 00136 Roma</p>
-    <p>P.IVA / C.F.: 18489501009</p>
-    <p>Codice SDI: M5UXCR1</p>
-  </div>
-</footer>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Plato Official Site</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #00AEEF;
+            --neon-green: #39FF14;
+            --fresh-green: #4CD964; 
+            --plato-orange: #FF8C00;
+            --text-light: #ffffff;
+            --fade-speed: 0.8s;
+        }
 
-<style>
-  footer {
-    padding: 30px 0;
-    background: #f8f8f8;
-    margin-top: 60px;
-  }
+        body, html {
+            margin: 0; padding: 0; height: 100%;
+            font-family: 'Inter', sans-serif; color: var(--text-light);
+            background-color: #000;
+            overflow: hidden;
+        }
 
-  .footer-legal {
-    font-size: 12px;
-    color: #666;
-    line-height: 1.5;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-  }
+        .nav-wrapper {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
 
-  .footer-legal p {
-    margin: 2px 0;
-  }
-</style>
+        .discover-link {
+            color: var(--text-light);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 11px;
+            font-weight: 300;
+            letter-spacing: 2.5px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeIn var(--fade-speed) forwards 0.5s;
+            white-space: nowrap;
+        }
+
+        .top-nav {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 12px 25px;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+        }
+
+        .top-nav ul { list-style: none; display: flex; gap: 25px; margin: 0; padding: 0; }
+        .top-nav a { color: var(--plato-orange); text-decoration: none; text-transform: uppercase; font-size: 11px; font-weight: 900; letter-spacing: 1.5px; }
+
+        .main-container {
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('plato-agricoltore-chef-verdure-fresche.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; 
+            position: relative;
+        }
+
+        .header-content {
+            text-align: center;
+            max-width: 1100px;
+            opacity: 0;
+            animation: fadeInUp var(--fade-speed) ease-out forwards 0.3s;
+            padding: 0 40px;
+            /* QUI REGOLI L'ALTEZZA: Più aumenti il numero, più le scritte scendono */
+            margin-top: 45vh; 
+        }
+        
+        h1 { 
+            color: var(--text-light);
+            font-size: 48px; 
+            margin: 0; 
+            text-transform: uppercase; 
+            font-weight: 900;
+            line-height: 1.1;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        }
+
+        h1 span.sub-line {
+            display: block;
+            color: var(--primary-blue);
+            font-size: 24px;
+            letter-spacing: 6px;
+            margin-top: 15px;
+            font-weight: 400;
+            white-space: nowrap; 
+        }
+
+        .highlight-green {
+            color: var(--fresh-green);
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        .coccarda-container {
+            margin-top: 30px;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+        }
+
+        .coccarda-img {
+            width: 150px;
+            height: auto;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            filter: contrast(110%);
+            animation: softPulse 3s infinite ease-in-out;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            display: block;
+            margin: 0 auto;
+        }
+
+        @keyframes softPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); filter: contrast(110%) drop-shadow(0 0 10px rgba(57, 255, 20, 0.4)); }
+        }
+
+        .coccarda-img.active {
+            filter: contrast(110%) drop-shadow(0 0 20px var(--neon-green));
+            transform: scale(1.08);
+            animation: none;
+        }
+
+        .popover-gpi {
+            position: absolute;
+            top: 115%; 
+            left: 50%;
+            transform: translateX(-50%) translateY(-10px);
+            background: rgba(57, 255, 20, 0.95); 
+            color: #ffffff; 
+            padding: 14px 22px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 800;
+            width: 280px;
+            text-transform: uppercase;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            pointer-events: none;
+            opacity: 0;
+            transition: all 0.3s ease-out;
+            z-index: 2000;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.6); 
+        }
+
+        .popover-gpi::after {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -8px;
+            border-width: 8px;
+            border-style: solid;
+            border-color: transparent transparent rgba(57, 255, 20, 0.95) transparent;
+        }
+
+        .popover-gpi.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .site-footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 25px 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 1000;
+        }
+
+        .footer-content {
+            text-align: center;
+            font-size: 10px;
+            font-weight: 300;
+            letter-spacing: 1.5px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            text-transform: uppercase;
+        }
+
+        .footer-content strong {
+            color: var(--plato-orange);
+            font-weight: 700;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        @media (max-width: 768px) {
+            .nav-wrapper { top: 20px; right: 50%; transform: translateX(50%); width: 90%; }
+            .header-content { margin-top: 45vh; padding: 0 20px; }
+            h1 { font-size: 26px; }
+            h1 span.sub-line { font-size: 13px; letter-spacing: 2px; }
+            .coccarda-img { width: 100px; }
+            .footer-content { font-size: 8px; letter-spacing: 1px; padding: 0 15px; }
+            .popover-gpi { width: 240px; font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav-wrapper">
+        <a href="chi-siamo.html" class="discover-link">Scopri il mondo Platò</a>
+        <nav class="top-nav">
+            <ul>
+                <li><a href="index.html" style="color: #fff;">Home</a></li>
+                <li><a href="chi-siamo.html">Chi Siamo</a></li>
+                <li><a href="clienti.html">Clienti</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main-container">
+        <div class="header-content">
+            <h1>Dal produttore alla tua cucina
+                <span class="sub-line">Senza filtri, <span class="highlight-green">solo qualità</span></span>
+            </h1>
+            <div class="coccarda-container">
+                <div id="gpi-popover" class="popover-gpi">
+                    Ogni partnership Platò è validata dal Protocollo di Ottimizzazione dei Costi
+                </div>
+                <img src="coccarda.png" id="coccarda" class="coccarda-img" alt="Certificato Platò">
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <strong>PLATO' SRL</strong><br>
+            Sede legale PIAZZA DELLA BALDUINA 59 00136 ROMA | P.IVA/C.F. 18489501009 | SDI M5UXCR1
+        </div>
+    </footer>
+
+    <script>
+        const coccarda = document.getElementById('coccarda');
+        const popover = document.getElementById('gpi-popover');
+        let timer;
+
+        function activatePopover(e) {
+            if (e && e.cancelable) e.preventDefault();
+            clearTimeout(timer);
+            popover.classList.remove('show');
+            coccarda.classList.remove('active');
+            void coccarda.offsetWidth; 
+            popover.classList.add('show');
+            coccarda.classList.add('active');
+            timer = setTimeout(() => {
+                popover.classList.remove('show');
+                coccarda.classList.remove('active');
+            }, 3800);
+        }
+
+        coccarda.addEventListener('touchstart', activatePopover, {passive: false});
+        coccarda.addEventListener('mousedown', activatePopover);
+    </script>
+</body>
+</html>
