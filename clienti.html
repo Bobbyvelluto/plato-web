@@ -204,6 +204,7 @@
         .sat-name-inner span { font-size: 7px; white-space: nowrap; }
         .long-text span { font-size: 5.5px; }
 
+        /* RESPONSIVE */
         @media (max-width: 1024px) {
             :root {
                 --orbit-radius: 180px;
@@ -214,7 +215,6 @@
             .header-section { top: 110px; }
             .center-logo-box { width: 28vh; }
             .top-nav { padding-right: 40px; }
-
             .sat-card { border-width: 1px; padding: 10px; }
             .sat-name-inner { width: 80%; }
             .sat-name-inner span { font-size: 6.5px; }
@@ -225,14 +225,11 @@
                 --orbit-radius: 125px; 
                 --sat-size: 62px;
             }
-
             .center-logo-box { width: 22vh; }
-            
             .gpi-seal-inline {
                 bottom: 11%; 
                 width: 22%; 
             }
-
             .top-nav { 
                 height: 60px; 
                 padding-right: 20px; 
@@ -243,7 +240,6 @@
                 padding-left: 10px;
                 min-width: 50px;
             }
-
             .sat-card { 
                 border-width: 1px; 
                 padding: 10px; 
@@ -252,12 +248,10 @@
             .sat-name-inner { width: 85%; padding: 1px 3px; }
             .sat-name-inner span { font-size: 5.5px; }
             .long-text span { font-size: 4.2px; }
-
             h1 { font-size: 26px; }
             h2 { font-size: 10px; letter-spacing: 1.5px; }
             .header-section { top: 85px; }
         }
-
     </style>
 </head>
 
@@ -298,5 +292,46 @@
         </div>
 
         <div class="orbit-container">
-            <a href="https://www.anticapesa.it" target="_blank" class="client-satellite" style="--i:0"><div class="sat-card"><img src="logo-plato-hd.png" class="sat-logo-inner"><div class="sat-name-inner"><span>Antica Pesa</span></div></div></a>
-            <a href="
+            <a href="https://casasantucciroma.com/" target="_blank" class="client-satellite" style="--i:0"><div class="sat-card"><img src="logo-plato-hd.png" class="sat-logo-inner"><div class="sat-name-inner"><span>Casa Santucci</span></div></div></a>
+            <a href="https://www.soralella.com" target="_blank" class="client-satellite" style="--i:1"><div class="sat-card"><img src="logo-plato-hd.png" class="sat-logo-inner"><div class="sat-name-inner"><span>Sora Lella</span></div></div></a>
+            <a href="https://www.feliceatestaccio.it" target="_blank" class="client-satellite" style="--i:2"><div class="sat-card"><img src="logo-plato-hd.png" class="sat-logo-inner"><div class="sat-name-inner long-text"><span>Felice a Testaccio</span></div></div></a>
+            <a href="https://www.romecavalieri.com/it/la-pergola" target="_blank" class="client-satellite" style="--i:3"><div class="sat-card"><img src="logo-plato-hd.png" class="sat-logo-inner"><div class="sat-name-inner"><span>La Pergola</span></div></div></a>
+            <a href="https://www.salumeriaroscioli.com" target="_blank" class="client-satellite" style="--i:4"><div class="sat-card"><img src="logo-plato-hd.png" class="sat-logo-inner"><div class="sat-name-inner"><span>Roscioli</span></div></div></a>
+            <a href="https://www.armandoalpantheon.it" target="_blank" class="client-satellite" style="--i:5"><div class="sat-card"><img src="logo-plato-hd.png" class="sat-logo-inner"><div class="sat-name-inner long-text"><span>Armando al Pantheon</span></div></div></a>
+            <a href="https://www.pierluigi.it" target="_blank" class="client-satellite" style="--i:6"><div class="sat-card"><img src="logo-plato-hd.png" class="sat-logo-inner"><div class="sat-name-inner"><span>Pierluigi</span></div></div></a>
+            <a href="https://www.daenzoal29.com" target="_blank" class="client-satellite" style="--i:7"><div class="sat-card"><img src="logo-plato-hd.png" class="sat-logo-inner"><div class="sat-name-inner"><span>Da Enzo al 29</span></div></div></a>
+            <a href="https://www.tavernatrilussa.it" target="_blank" class="client-satellite" style="--i:8"><div class="sat-card"><img src="logo-plato-hd.png" class="sat-logo-inner"><div class="sat-name-inner long-text"><span>Taverna Trilussa</span></div></div></a>
+        </div>
+    </div>
+
+    <script>
+        const audio = document.getElementById('bg-audio');
+        const btn = document.getElementById('audio-btn');
+        const txt = document.getElementById('status-txt');
+
+        audio.volume = 0.25;
+
+        window.addEventListener('load', () => {
+            audio.play().then(() => {
+                txt.innerText = 'ON';
+            }).catch(() => {
+                document.addEventListener('click', () => {
+                    audio.play();
+                    txt.innerText = 'ON';
+                }, { once: true });
+            });
+        });
+
+        btn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                txt.innerText = 'ON';
+            } else {
+                audio.pause();
+                txt.innerText = 'OFF';
+            }
+        });
+    </script>
+
+</body>
+</html>
