@@ -157,7 +157,6 @@
             );
         }
 
-        /* --- STILE DESKTOP ORIGINALE (Invariato) --- */
         .sat-card {
             background: #fff;
             border-radius: 50%;
@@ -166,7 +165,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            border: 3px solid var(--plato-orange); /* Bordo Desktop originale */
+            border: 3px solid var(--plato-orange);
             box-shadow: 0 0 12px rgba(255, 140, 0, 0.4);
             animation: pulseSat 4s infinite ease-in-out;
             transition: all 0.3s ease;
@@ -205,10 +204,6 @@
         .sat-name-inner span { font-size: 7px; white-space: nowrap; }
         .long-text span { font-size: 5.5px; }
 
-        /* ========================================================= */
-        /* ====================== RESPONSIV ========================= */
-        /* ========================================================= */
-
         @media (max-width: 1024px) {
             :root {
                 --orbit-radius: 180px;
@@ -220,7 +215,6 @@
             .center-logo-box { width: 28vh; }
             .top-nav { padding-right: 40px; }
 
-            /* Modifiche solo per Tablet */
             .sat-card { border-width: 1px; padding: 10px; }
             .sat-name-inner { width: 80%; }
             .sat-name-inner span { font-size: 6.5px; }
@@ -250,7 +244,6 @@
                 min-width: 50px;
             }
 
-            /* Modifiche solo per Mobile */
             .sat-card { 
                 border-width: 1px; 
                 padding: 10px; 
@@ -306,45 +299,4 @@
 
         <div class="orbit-container">
             <a href="https://www.anticapesa.it" target="_blank" class="client-satellite" style="--i:0"><div class="sat-card"><img src="logo-plato-hd.png" class="sat-logo-inner"><div class="sat-name-inner"><span>Antica Pesa</span></div></div></a>
-            <a href="https://www.soralella.com" target="_blank" class="client-satellite" style="--i:1"><div class="sat-card"><img src="logo-plato-hd.png" class="sat-logo-inner"><div class="sat-name-inner"><span>Sora Lella</span></div></div></a>
-            <a href="https://www.feliceatestaccio.it" target="_blank" class="client-satellite" style="--i:2"><div class="sat-card"><img src="logo-plato-hd.png" class="sat-logo-inner"><div class="sat-name-inner long-text"><span>Felice a Testaccio</span></div></div></a>
-            <a href="https://www.romecavalieri.com/it/la-pergola" target="_blank" class="client-satellite" style="--i:3"><div class="sat-card"><img src="logo-plato-hd.png" class="sat-logo-inner"><div class="sat-name-inner"><span>La Pergola</span></div></div></a>
-            <a href="https://www.salumeriaroscioli.com" target="_blank" class="client-satellite" style="--i:4"><div class="sat-card"><img src="logo-plato-hd.png" class="sat-logo-inner"><div class="sat-name-inner"><span>Roscioli</span></div></div></a>
-            <a href="https://www.armandoalpantheon.it" target="_blank" class="client-satellite" style="--i:5"><div class="sat-card"><img src="logo-plato-hd.png" class="sat-logo-inner"><div class="sat-name-inner long-text"><span>Armando al Pantheon</span></div></div></a>
-            <a href="https://www.pierluigi.it" target="_blank" class="client-satellite" style="--i:6"><div class="sat-card"><img src="logo-plato-hd.png" class="sat-logo-inner"><div class="sat-name-inner"><span>Pierluigi</span></div></div></a>
-            <a href="https://www.daenzoal29.com" target="_blank" class="client-satellite" style="--i:7"><div class="sat-card"><img src="logo-plato-hd.png" class="sat-logo-inner"><div class="sat-name-inner"><span>Da Enzo al 29</span></div></div></a>
-            <a href="https://www.tavernatrilussa.it" target="_blank" class="client-satellite" style="--i:8"><div class="sat-card"><img src="logo-plato-hd.png" class="sat-logo-inner"><div class="sat-name-inner long-text"><span>Taverna Trilussa</span></div></div></a>
-        </div>
-    </div>
-
-    <script>
-        const audio = document.getElementById('bg-audio');
-        const btn = document.getElementById('audio-btn');
-        const txt = document.getElementById('status-txt');
-
-        audio.volume = 0.25;
-
-        window.addEventListener('load', () => {
-            audio.play().then(() => {
-                txt.innerText = 'ON';
-            }).catch(() => {
-                document.addEventListener('click', () => {
-                    audio.play();
-                    txt.innerText = 'ON';
-                }, { once: true });
-            });
-        });
-
-        btn.addEventListener('click', () => {
-            if (audio.paused) {
-                audio.play();
-                txt.innerText = 'ON';
-            } else {
-                audio.pause();
-                txt.innerText = 'OFF';
-            }
-        });
-    </script>
-
-</body>
-</html>
+            <a href="
