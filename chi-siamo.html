@@ -11,6 +11,7 @@
     --primary-blue: #00AEEF;
     --neon-green: #32CD32;
     --plato-orange: #FF8C00;
+    --bordeaux: #800020; /* Colore Bordeaux */
     --text-light: #ffffff;
 }
 
@@ -31,50 +32,51 @@ body, html {
 
 @keyframes fadeInHero { to { opacity: 1; } }
 
-/* NAVIGAZIONE DESKTOP */
-.nav-wrapper {
-    position: absolute;
-    top: 30px;
-    right: 40px;
-    z-index: 1000;
+/* --- SEZIONE DESKTOP --- */
+@media (min-width: 769px) {
+    .piano-operativo {
+        position: absolute;
+        /* PARAMETRI POSIZIONE DESKTOP */
+        top: 70%; /* Aumenta % per abbassare, diminuisci per alzare */
+        left: 50%;
+        transform: translate(-50%, -50%);
+        
+        /* PARAMETRI PADDING E DIMENSIONE DESKTOP */
+        width: 250px;
+        padding: 25px; /* Modifica questo per stringere/allargare il modulo */
+        
+        background: rgba(0,0,0,0.65);
+        border-radius: 15px;
+        backdrop-filter: blur(8px);
+        color: white;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
 }
 
-.top-nav {
-    background: rgba(0, 0, 0, 0.4);
-    padding: 12px 25px;
-    border-radius: 50px;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    align-items: center;
-    gap: 25px;
+/* --- SEZIONE RESPONSIVE (MOBILE) --- */
+@media (max-width: 768px) {
+    .piano-operativo {
+        position: absolute;
+        /* PARAMETRI POSIZIONE MOBILE */
+        top: 70%; /* Aumenta % per abbassare, diminuisci per alzare */
+        left: 50%;
+        transform: translate(-50%, -50%);
+        
+        /* PARAMETRI PADDING E DIMENSIONE MOBILE */
+        width: 50%;
+        padding: 15px; /* Modifica questo per stringere/allargare il modulo su mobile */
+        
+        background: rgba(0,0,0,0.65);
+        border-radius: 15px;
+        backdrop-filter: blur(8px);
+        color: white;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
 }
 
-.top-nav a {
-    color: var(--plato-orange);
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 11px;
-    font-weight: 900;
-    letter-spacing: 1.5px;
-}
-
-/* PIANO OPERATIVO */
-.piano-operativo {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 250px;
-    background: rgba(0,0,0,0.65);
-    padding: 25px;
-    border-radius: 15px;
-    backdrop-filter: blur(8px);
-    color: white;
-    text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
+/* STILI COMUNI MODULO */
 .piano-operativo h3 {
     margin: 0 0 20px 0;
     color: var(--neon-green);
@@ -92,6 +94,26 @@ body, html {
     font-size: 12px;
     text-transform: uppercase;
     animation: pulseGlowAzzurro 3.5s infinite ease-in-out;
+}
+
+/* BOX "OFFRE PLATÒ" BORDEAUX */
+.offre-plato-box {
+    margin-top: 15px;
+    padding: 10px;
+    border: 1.5px solid var(--bordeaux);
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--bordeaux);
+    cursor: pointer;
+    background: rgba(0,0,0,0.4);
+    animation: blinkGlowBordeaux 2.5s infinite alternate;
+}
+
+@keyframes blinkGlowBordeaux {
+    0% { opacity: 0.6; box-shadow: 0 0 2px var(--bordeaux); }
+    100% { opacity: 1; box-shadow: 0 0 15px var(--bordeaux); }
 }
 
 @keyframes pulseGlowAzzurro {
@@ -113,77 +135,19 @@ body, html {
     z-index: 1100;
 }
 
-.popover h4 { margin: 0 0 8px 0; font-weight: 900; text-shadow: 1px 1px 2px #000; }
 .popover p { margin: 0; font-weight: 700; text-shadow: 1px 1px 1px #000; }
 
-/* AUDIO */
+/* NAV & AUDIO (Stili Originali) */
+.nav-wrapper { position: absolute; top: 30px; right: 40px; z-index: 1000; }
+.top-nav { background: rgba(0,0,0,0.4); padding: 12px 25px; border-radius: 50px; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 25px; }
+.top-nav a { color: var(--plato-orange); text-decoration: none; text-transform: uppercase; font-size: 11px; font-weight: 900; letter-spacing: 1.5px; }
 .audio-ctrl { cursor: pointer; display: flex; align-items: center; gap: 8px; border-left: 1px solid rgba(255,255,255,0.3); padding-left: 20px; }
 
-/* --------------------------------------------------
-   OFFRE PLATÒ — SPAZIO SIMMETRICO
--------------------------------------------------- */
-.bottom-box {
-    position: absolute;
-    bottom: 5%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 340px;
-    background: rgba(0,0,0,0.8);
-
-    padding: 10px 15px;
-    border-radius: 12px;
-    text-align: center;
-    border: 1.5px solid var(--neon-green);
-    color: white;
-}
-
-.bottom-box h4 { 
-    margin: 0;
-    color: var(--neon-green);
-    font-size: 18px;
-    text-transform: uppercase;
-}
-
-.bottom-box p { 
-    margin: 4px 0 0 0;
-    font-size: 13px;
-    line-height: 1.3;
-    color: white;
-    white-space: pre-line;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-}
-
-/* RESPONSIVE */
 @media (max-width: 768px) {
-
     .nav-wrapper { top: 15px; right: 0; left: 0; width: 100%; display: flex; justify-content: center; }
     .top-nav { gap: 12px; padding: 10px 38px; border-radius: 20px; width: 90%; justify-content: center; }
-    .top-nav a { font-size: 8px; letter-spacing: 0.5px; }
-
-    .piano-operativo { width: 25%; top: 60%; padding: 12px; }
-    .piano-operativo h3 { font-size: 14px; margin-bottom: 10px; }
-
-    .step { font-size: 9px; padding: 4px; margin-bottom: 5px; }
-
-    /* ⭐ POPOVER MOBILE MIGLIORATO */
-    .popover {
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        top: 45% !important;      /* 🔥 più centrato */
-        width: 70%;               /* 🔥 più leggibile */
-        padding: 14px;
-        border-radius: 12px;
-    }
-
-    /* OFFRE PLATÒ — MOBILE */
-    .bottom-box { 
-        width: 60%;
-        bottom: 18%;
-        padding: 10px 12px;
-    }
-
-    .bottom-box h4 { font-size: 14px; margin: 0; }
-    .bottom-box p { font-size: 11px; margin-top: 4px; }
+    .top-nav a { font-size: 8px; }
+    .popover { left: 50% !important; transform: translateX(-50%) !important; top: 45% !important; width: 70%; }
 }
 </style>
 </head>
@@ -191,14 +155,12 @@ body, html {
 <body>
 <div class="hero">
 
-    <!-- NAV -->
     <div class="nav-wrapper">
         <nav class="top-nav">
             <a href="index.html">Home</a>
             <a href="chi-siamo.html" style="color:white">Chi Siamo</a>
             <a href="clienti.html">Clienti</a>
             <a href="contatti.html">Contatti</a>
-
             <div class="audio-ctrl" id="audioToggle">
                 <svg id="iconOn" width="20" height="20" viewBox="0 0 24 24" fill="#ffffff"><path d="M3 9V15H7L12 20V4L7 9H3Z"/><path d="M16.5 12C16.5 10.23 15.46 8.71 14 7.97V16.03C15.46 15.29 16.5 13.77 16.5 12Z"/><path d="M14 3.23V5.29C17.39 6.15 20 8.83 20 12C20 15.17 17.39 17.85 14 18.71V20.77C18.45 19.86 22 16.28 22 12C22 7.72 18.45 4.14 14 3.23Z"/></svg>
                 <svg id="iconOff" width="20" height="20" viewBox="0 0 24 24" fill="#ffffff" style="display:none;"><path d="M3 9V15H7L12 20V4L7 9H3Z"/><path d="M16 8L20 12L16 16" stroke="#ffffff" stroke-width="2" fill="none"/></svg>
@@ -206,75 +168,59 @@ body, html {
         </nav>
     </div>
 
-    <!-- PIANO OPERATIVO -->
     <div class="piano-operativo">
         <h3>Piano Operativo</h3>
-
         <div class="step" data-title="Analisi Dati" data-text="Studio e valutazione di costi sostenuti negli ultimi due mesi.">1. Analisi Dati</div>
-
         <div class="step" data-title="Benchmarking" data-text="Confronto dei costi con i nostri listini per identificare le aree di miglioramento.">2. Benchmarking</div>
-
         <div class="step" data-title="Presentazione risparmio" data-text="Presentazione del valore stimato del risparmio.">3. Presentazione risparmio</div>
-
         <div class="step" data-title="Disintermediazione" data-text="Proposta di cambio di modello di acquisto. Qualità uguale o superiore.">4. Disintermediazione</div>
-
         <div class="step" data-title="Monitoraggio SaaS" data-text="Assistenza continuativa e monitoraggio nel tempo.">5. Monitoraggio SaaS</div>
+        
+        <div class="offre-plato-box" id="btnOffrePlato">Offre Platò</div>
     </div>
 
-    <!-- POPOVER -->
     <div id="popover" class="popover"></div>
-
-    <!-- OFFRE PLATÒ -->
-    <div class="bottom-box">
-        <h4>Offre Platò</h4>
-        <p>
-Il servizio è totalmente gratuito.
-Nessuna commissione richiesta.
-Neanche dopo la sottoscrizione.
-        </p>
-    </div>
-
 </div>
 
 <audio id="bgAudio" src="restaurant.mp3" autoplay loop></audio>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-
     const pop = document.getElementById('popover');
     const steps = document.querySelectorAll('.step');
+    const btnOffrePlato = document.getElementById('btnOffrePlato');
+
+    function showPop(element, text, hasTitle = true) {
+        pop.innerHTML = hasTitle ? `<h4>${element.dataset.title}</h4><p>${text}</p>` : `<p>${text}</p>`;
+        pop.style.display = 'block';
+
+        if(window.innerWidth > 768) {
+            const rect = element.getBoundingClientRect();
+            pop.style.top = rect.top + 'px';
+            pop.style.left = (rect.right + 20) + 'px';
+        }
+
+        clearTimeout(pop._timer);
+        pop._timer = setTimeout(() => pop.style.display = 'none', 4500);
+    }
 
     steps.forEach(step => {
-        step.addEventListener('click', () => {
-            pop.innerHTML = `<h4>${step.dataset.title}</h4><p>${step.dataset.text}</p>`;
-            pop.style.display = 'block';
+        step.addEventListener('click', () => showPop(step, step.dataset.text));
+    });
 
-            if(window.innerWidth > 768) {
-                const rect = step.getBoundingClientRect();
-                pop.style.top = rect.top + 'px';
-                pop.style.left = (rect.right + 20) + 'px';
-            }
-
-            clearTimeout(pop._timer);
-            pop._timer = setTimeout(() => pop.style.display = 'none', 4500);
-        });
+    btnOffrePlato.addEventListener('click', () => {
+        showPop(btnOffrePlato, "il servizio per i ristoratori è a titolo completamente gratuito", false);
     });
 
     const audio = document.getElementById('bgAudio');
     const toggle = document.getElementById('audioToggle');
+    const iconOn = document.getElementById('iconOn'), iconOff = document.getElementById('iconOff');
     audio.volume = 0.25;
     let playing = true;
 
     toggle.addEventListener('click', () => {
-        if (playing) {
-            audio.pause();
-            iconOn.style.display = "none";
-            iconOff.style.display = "block";
-        } else {
-            audio.play();
-            iconOff.style.display = "none";
-            iconOn.style.display = "block";
-        }
+        if (playing) { audio.pause(); iconOn.style.display = "none"; iconOff.style.display = "block"; }
+        else { audio.play(); iconOff.style.display = "none"; iconOn.style.display = "block"; }
         playing = !playing;
     });
 });
