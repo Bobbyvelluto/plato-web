@@ -11,7 +11,7 @@
     --primary-blue: #00AEEF;
     --neon-green: #32CD32;
     --plato-orange: #FF8C00;
-    --bordeaux: #800020; 
+    --bordeaux: #800020; /* Colore Bordeaux */
     --text-light: #ffffff;
 }
 
@@ -36,11 +36,15 @@ body, html {
 @media (min-width: 769px) {
     .piano-operativo {
         position: absolute;
-        top: 70%; 
+        /* PARAMETRI POSIZIONE DESKTOP */
+        top: 70%; /* Aumenta % per abbassare, diminuisci per alzare */
         left: 50%;
         transform: translate(-50%, -50%);
+        
+        /* PARAMETRI PADDING E DIMENSIONE DESKTOP */
         width: 250px;
-        padding: 25px; 
+        padding: 25px; /* Modifica questo per stringere/allargare il modulo */
+        
         background: rgba(0,0,0,0.65);
         border-radius: 15px;
         backdrop-filter: blur(8px);
@@ -54,20 +58,26 @@ body, html {
 @media (max-width: 768px) {
     .piano-operativo {
         position: absolute;
+        /* PARAMETRI POSIZIONE MOBILE */
         top: 70%; 
         left: 50%;
-        transform: translate(-50%, -50%);
-        width: 60%; 
-        padding: 12px; 
-        background: rgba(0,0,0,0.75);
+        /* RIPICCIOLITO MANTENENDO LARGHEZZA INALTERATA */
+        transform: translate(-50%, -50%) scale(0.85);
+        
+        /* PARAMETRI PADDING E DIMENSIONE MOBILE */
+        width: 40%;
+        padding: 8px; 
+        
+        background: rgba(0,0,0,0.65);
         border-radius: 15px;
         backdrop-filter: blur(8px);
         color: white;
         text-align: center;
-        border: 1px solid rgba(184, 167, 167, 0.2);
+        border: 1px solid rgba(184, 167, 167, 0.1);
     }
 }
 
+/* STILI COMUNI MODULO */
 .piano-operativo h3 {
     margin: 0 0 20px 0;
     color: var(--neon-green);
@@ -87,24 +97,24 @@ body, html {
     animation: pulseGlowAzzurro 3.5s infinite ease-in-out;
 }
 
-/* BOX "OFFRE PLATÒ" - ORA IN VERDE */
+/* BOX "OFFRE PLATÒ" BORDEAUX */
 .offre-plato-box {
     margin-top: 15px;
     padding: 10px;
-    border: 1.5px solid var(--neon-green);
+    border: 1.5px solid var(--white);
     border-radius: 10px;
     font-size: 11px;
     font-weight: 900;
     text-transform: uppercase;
-    color: var(--neon-green);
+    color: var(--text-light);
     cursor: pointer;
-    background: rgba(0, 0, 0, 0.4);
-    animation: blinkGlowGreen 2.5s infinite alternate;
+    background: rgba(17, 181, 11, 0.4);
+    animation: blinkGlowBordeaux 2.5s infinite alternate;
 }
 
-@keyframes blinkGlowGreen {
-    0% { opacity: 0.6; box-shadow: 0 0 2px var(--neon-green); }
-    100% { opacity: 1; box-shadow: 0 0 15px var(--neon-green); }
+@keyframes blinkGlowBordeaux {
+    0% { opacity: 0.6; box-shadow: 0 0 2px var(--bordeaux); }
+    100% { opacity: 1; box-shadow: 0 0 15px var(--bordeaux); }
 }
 
 @keyframes pulseGlowAzzurro {
@@ -116,18 +126,17 @@ body, html {
 .popover {
     position: fixed;
     display: none;
-    width: 240px;
-    background: rgba(6, 142, 101, 0.98);
-    padding: 15px;
+    width: 150px;
+    background: rgba(6, 142, 101, 0.95);
+    padding: 12px;
     border-radius: 12px;
-    border: 1px solid white;
-    color: white;
+    border: 1px solid rgb(19, 80, 137);
+    color: rgb(184, 214, 227);
     text-align: center;
     z-index: 1100;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-.popover p { margin: 0; font-weight: 700; text-shadow: 1px 1px 1px #000; font-size: 13px; line-height: 1.4; }
+.popover p { margin: 0; font-weight: 700; text-shadow: 1px 1px 1px #000; }
 
 /* NAV & AUDIO */
 .nav-wrapper { position: absolute; top: 30px; right: 40px; z-index: 1000; }
@@ -139,7 +148,7 @@ body, html {
     .nav-wrapper { top: 15px; right: 0; left: 0; width: 100%; display: flex; justify-content: center; }
     .top-nav { gap: 12px; padding: 10px 38px; border-radius: 20px; width: 90%; justify-content: center; }
     .top-nav a { font-size: 8px; }
-    .popover { width: 80%; max-width: 300px; }
+    .popover { left: 50% !important; transform: translateX(-50%) !important; top: 45% !important; width: 70%; }
 }
 </style>
 </head>
@@ -160,13 +169,13 @@ body, html {
         </nav>
     </div>
 
-    <div class="piano-operativo" id="pianoContainer">
+    <div class="piano-operativo">
         <h3>Piano Operativo</h3>
-        <div class="step" data-text="Studio e valutazione di costi sostenuti negli ultimi due mesi.">1. Analisi Dati</div>
-        <div class="step" data-text="Confronto dei costi con i nostri listini per identificare le aree di miglioramento.">2. Benchmarking</div>
-        <div class="step" data-text="Presentazione del valore stimato del risparmio.">3. Presentazione risparmio</div>
-        <div class="step" data-text="Proposta di cambio di modello di acquisto. Qualità uguale o superiore.">4. Disintermediazione</div>
-        <div class="step" data-text="Assistenza continuativa e monitoraggio nel tempo.">5. Monitoraggio SaaS</div>
+        <div class="step" data-title="Analisi Dati" data-text="Studio e valutazione di costi sostenuti negli ultimi due mesi.">1. Analisi Dati</div>
+        <div class="step" data-title="Benchmarking" data-text="Confronto dei costi con i nostri listini per identificare le aree di miglioramento.">2. Benchmarking</div>
+        <div class="step" data-title="Presentazione risparmio" data-text="Presentazione del valore stimato del risparmio.">3. Presentazione risparmio</div>
+        <div class="step" data-title="Disintermediazione" data-text="Proposta di cambio di modello di acquisto. Qualità uguale o superiore.">4. Disintermediazione</div>
+        <div class="step" data-title="Monitoraggio SaaS" data-text="Assistenza continuativa e monitoraggio nel tempo.">5. Monitoraggio SaaS</div>
         
         <div class="offre-plato-box" id="btnOffrePlato">Offre Platò</div>
     </div>
@@ -181,25 +190,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const pop = document.getElementById('popover');
     const steps = document.querySelectorAll('.step');
     const btnOffrePlato = document.getElementById('btnOffrePlato');
-    const pianoContainer = document.getElementById('pianoContainer');
 
-    function showPop(element, text) {
-        pop.innerHTML = `<p>${text}</p>`;
+    function showPop(element, text, hasTitle = true) {
+        pop.innerHTML = hasTitle ? `<h4>${element.dataset.title}</h4><p>${text}</p>` : `<p>${text}</p>`;
         pop.style.display = 'block';
 
-        const rectPiano = pianoContainer.getBoundingClientRect();
-        const popHeight = pop.offsetHeight;
-        const popWidth = pop.offsetWidth;
-
-        pop.style.left = (window.innerWidth / 2 - popWidth / 2) + 'px';
-        
-        let targetTop = rectPiano.top - popHeight - 15;
-
-        if (targetTop < 80) {
-            targetTop = 80; 
+        if(window.innerWidth > 768) {
+            const rect = element.getBoundingClientRect();
+            pop.style.top = rect.top + 'px';
+            pop.style.left = (rect.right + 20) + 'px';
         }
-
-        pop.style.top = targetTop + 'px';
 
         clearTimeout(pop._timer);
         pop._timer = setTimeout(() => pop.style.display = 'none', 4500);
@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     btnOffrePlato.addEventListener('click', () => {
-        showPop(btnOffrePlato, "il servizio per i ristoratori è a titolo completamente gratuito");
+        showPop(btnOffrePlato, "il servizio per i ristoratori è a titolo completamente gratuito", false);
     });
 
     const audio = document.getElementById('bgAudio');
